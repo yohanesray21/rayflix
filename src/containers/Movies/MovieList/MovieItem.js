@@ -6,34 +6,30 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import { Box } from "@mui/system";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
 
 const MovieItem = ({ result }) => {
+  const navigate = useNavigate();
+
+  // const slug = result?.title ?
+
   return (
-    <Card>
+    <Card sx={{ cursor: "pointer" }} onClick={() => console.log("test")}>
       <CardMedia
         component="img"
         image={IMAGE_URL + result?.poster_path}
         alt={result?.title}
+        height={300}
       />
-      <CardContent sx={{ height: "100px" }} wrap>
+      <CardContent sx={{ height: "100px" }}>
         <Typography>{result?.title ?? result?.name}</Typography>
-        <Box
-          mt={2}
-          display="flex"
-          justifyContent="space-between"
-          sx={{ flexDirection: { xs: "column", md: "row" } }}
-        >
-          <Button>Buy</Button>
-          <Button>Description</Button>
-        </Box>
       </CardContent>
       {/* <CardActions >
-        
-      </CardActions> */}
+          
+        </CardActions> */}
     </Card>
   );
 };

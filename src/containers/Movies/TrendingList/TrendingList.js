@@ -14,7 +14,6 @@ const TrendingList = () => {
   return (
     <Box mt={2}>
       <MovieList list={trendingData} />
-      {console.log(trendingData)}
     </Box>
   );
 };
