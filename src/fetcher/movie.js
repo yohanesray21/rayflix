@@ -16,3 +16,16 @@ export const getTrendingMovies = async ({ page }) => {
   const data = await MakeApiRequest(configRequest);
   return data;
 };
+
+export const getDetailMovie = async ({ id, language }) => {
+  const url_endpoint = `/movie/${id}`;
+  const api_key_endpoint = `?api_key=${API_KEY}`;
+  const language_endpoint = language ? `&language=${language}` : "";
+
+  const configRequest = {
+    BASE_URL,
+    endpoint: `${url_endpoint}${api_key_endpoint}${language_endpoint}`,
+  };
+  const data = await MakeApiRequest(configRequest);
+  return data;
+};

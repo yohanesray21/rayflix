@@ -5,6 +5,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TrendingList from "./containers/Movies/TrendingList/TrendingList";
 import NavigationBar from "./containers/NavigationBar/NavigationBar";
+import RoutesApp from "./routes";
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
       <CssBaseline />
       <NavigationBar />
       <Box sx={{ mx: 15, pt: 2 }}>
-        <TrendingList />
+        <RoutesApp />
       </Box>
     </Box>
   );
