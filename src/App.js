@@ -1,9 +1,6 @@
-import { Container } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Box } from "@mui/system";
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TrendingList from "./containers/Movies/TrendingList/TrendingList";
 import NavigationBar from "./containers/NavigationBar/NavigationBar";
 import RoutesApp from "./routes";
 

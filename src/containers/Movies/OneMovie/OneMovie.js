@@ -2,7 +2,6 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getIdFromSlug } from "../../../common/text";
-import TransitionsModal from "../../../components/ModalMovie";
 import DetailBottom from "../../../components/onemovies/DetailBottom";
 import DetailTop from "../../../components/onemovies/DetailTop";
 import { getDetailMovie } from "../../../fetcher/movie";
@@ -12,6 +11,7 @@ const OneMovie = () => {
   const movieId = location.pathname;
 
   const [movieData, setMovieData] = useState({});
+  console.log(movieData, "one");
 
   useEffect(() => {
     getDetailMovie({ id: getIdFromSlug(movieId), language: "en-US" })
