@@ -3,16 +3,25 @@ import { Box } from "@mui/system";
 import React from "react";
 import NavigationBar from "./containers/NavigationBar/NavigationBar";
 import RoutesApp from "./routes";
+import { createTheme, ThemeProvider } from "@mui/material";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: "'Roboto', sans-serif",
+  },
+});
 
 const App = () => {
   return (
-    <Box bgcolor="gray" minHeight="100vh">
-      <CssBaseline />
-      <NavigationBar />
-      <Box sx={{ mx: 15, pt: 2 }}>
-        <RoutesApp />
+    <ThemeProvider theme={theme}>
+      <Box minHeight="100vh">
+        <CssBaseline />
+        <NavigationBar />
+        <Box sx={{ mx: 15, pt: 2 }}>
+          <RoutesApp />
+        </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 };
 
