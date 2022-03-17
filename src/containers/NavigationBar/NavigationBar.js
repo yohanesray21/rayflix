@@ -14,32 +14,43 @@ const NavigationBar = () => {
       alignItems="center"
       px={15}
       py={1}
-      sx={{ backgroundColor: "#2c2a32", color: "white" }}
+      sx={{ backgroundColor: "primary.main", color: "primary" }}
       height={{ xl: "8vh", md: "6vh" }}
     >
       <Box sx={{ cursor: "pointer" }}>
-        <Typography variant="h4" component="h1" fontWeight="bold">
+        <Typography
+          color="primary.light"
+          variant="h4"
+          component="h1"
+          fontWeight="bold"
+        >
           RAYFLIX
         </Typography>
       </Box>
       <Stack
         direction={{ xs: "column", sm: "row" }}
         spacing={{ xs: 1, sm: 2, md: 4 }}
-        color="white"
+        color="primary.dark"
       >
         <Link to="/" style={{ textDecoration: "none" }}>
-          <Typography variant="body1" sx={{ color: "white" }}>
+          <Typography variant="h6" sx={{ color: "primary.dark" }}>
             Home
           </Typography>
         </Link>
         <Link to="/film" style={{ textDecoration: "none" }}>
-          <Typography sx={{ color: "white" }}>Film</Typography>
+          <Typography variant="h6" sx={{ color: "primary.dark" }}>
+            Film
+          </Typography>
         </Link>
         <Link to="/trending" style={{ textDecoration: "none" }}>
-          <Typography sx={{ color: "white" }}>Trending</Typography>
+          <Typography variant="h6" sx={{ color: "primary.dark" }}>
+            Trending
+          </Typography>
         </Link>
         <Link to="/tvshow" style={{ textDecoration: "none" }}>
-          <Typography sx={{ color: "white" }}>TV Show</Typography>
+          <Typography variant="h6" sx={{ color: "primary.dark" }}>
+            TV Show
+          </Typography>
         </Link>
       </Stack>
       <Box sx={{ cursor: "pointer" }}>

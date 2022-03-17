@@ -13,7 +13,7 @@ const TrendingList = () => {
 
   return (
     <Box mt={2}>
-      <MovieList list={trendingData} />
+      <MovieList title="Trending" list={trendingData} />
     </Box>
   );
 };

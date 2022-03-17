@@ -11,7 +11,6 @@ const OneMovie = () => {
   const movieId = location.pathname;
 
   const [movieData, setMovieData] = useState({});
-  console.log(movieData, "one");
 
   useEffect(() => {
     getDetailMovie({ id: getIdFromSlug(movieId), language: "en-US" })
@@ -22,7 +21,6 @@ const OneMovie = () => {
   return (
     <Box display="flex" flexDirection="column">
       <DetailTop movieData={movieData} />
-      <DetailBottom movieData={movieData} />
     </Box>
   );
 };

@@ -1,18 +1,21 @@
 import { Box } from "@mui/system";
-import { Button, Chip, Rating, Typography } from "@mui/material";
+import { Button, Chip, Rating, Stack, Typography } from "@mui/material";
 import React from "react";
 import { IMAGE_URL } from "../../common/image";
 import { timeConvert } from "../../common/time";
 
 const DetailTop = ({ movieData }) => {
+  const title = movieData?.title;
   return (
     <Box
       width="100%"
       display="flex"
       flexDirection="row"
       py={10}
-      pl={6}
+      px={6}
       justifyContent="center"
+      color="primary"
+      bgcolor="#edf2f7"
     >
       <Box mr={5}>
         <img
@@ -26,19 +29,61 @@ const DetailTop = ({ movieData }) => {
       </Box>
       <Box display="flex" flexDirection="column">
         <Typography variant="h4" component="h1" fontWeight="bold">
-          {movieData?.title}
+          {title}
         </Typography>
-        <Typography variant="h6" component="p" fontWeight="bold" mt={2}>
-          Rp.{movieData?.budget}
-        </Typography>
+        <Box>
+          <Typography variant="h6" component="p" fontWeight="bold" mt={2}>
+            Rp.{movieData?.budget}
+          </Typography>
+        </Box>
+
+        <Box>
+          <Typography
+            variant="h6"
+            mt={2}
+            sx={{ textDecorationLine: "underline" }}
+          >
+            DESCRIPTION
+          </Typography>
+          <Typography variant="h6">{movieData?.overview}</Typography>
+        </Box>
+
         <Box mt={2} display="flex" flexDirection="row" justifyContent="center">
           {movieData?.genres?.map((genre) => (
             <Chip key={genre?.id} label={genre?.name} sx={{ mr: 2 }} />
           ))}
         </Box>
+
+        <Box display="flex" alignItems="center" mt={1}>
+          <Typography variant="h6" sx={{ textDecorationLine: "underline" }}>
+            DURATION
+          </Typography>
+          <span style={{ textDecorationLine: "none", marginLeft: 16 }}>:</span>
+          <Typography variant="h6" ml={2}>
+            {timeConvert(movieData?.runtime)}
+          </Typography>
+        </Box>
+        <Box display="flex" mt={1} alignItems="center">
+          <Typography variant="h6" sx={{ textDecorationLine: "underline" }}>
+            LANGUAGE
+          </Typography>
+          <span style={{ textDecorationLine: "none", marginLeft: 8 }}>:</span>
+          <ul style={{ display: "flex" }}>
+            {movieData?.spoken_languages?.map((language) => (
+              <li style={{ marginRight: 25 }}>
+                <Typography variant="h6">{language?.name}</Typography>
+              </li>
+            ))}
+          </ul>
+        </Box>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6" component="p" mt={2}>
-            Rating
+          <Typography
+            variant="h6"
+            component="p"
+            mt={1}
+            sx={{ textDecorationLine: "underline" }}
+          >
+            RATINGS
           </Typography>
           <Rating
             name="read-only"
@@ -46,15 +91,10 @@ const DetailTop = ({ movieData }) => {
             readOnly
             sx={{ mt: 2 }}
           />
-          <Typography variant="h6" component="p" mt={2}>
+          <Typography variant="h6" component="p" fontWeight="bold" mt={2}>
             {movieData?.vote_average}
           </Typography>
         </Box>
-        <Typography variant="h6" mt={2}>
-          Description
-        </Typography>
-        <Typography variant="h6">{movieData?.overview}</Typography>
-        <Typography variant="h6">{timeConvert(movieData?.runtime)}</Typography>
       </Box>
     </Box>
   );

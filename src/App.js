@@ -6,6 +6,13 @@ import RoutesApp from "./routes";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#131a28",
+      dark: "#646971",
+      light: "#edf2f7",
+    },
+  },
   typography: {
     fontFamily: "'Roboto', sans-serif",
   },
@@ -14,7 +21,7 @@ const theme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Box minHeight="100vh">
+      <Box bgcolor="primary.light" minHeight="100vh">
         <CssBaseline />
         <NavigationBar />
         <Box sx={{ mx: 15, pt: 2 }}>
