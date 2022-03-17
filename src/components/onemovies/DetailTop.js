@@ -83,7 +83,7 @@ const DetailTop = ({ movieData }) => {
             mt={1}
             sx={{ textDecorationLine: "underline" }}
           >
-            RATINGS
+            RATINGs
           </Typography>
           <Rating
             name="read-only"
