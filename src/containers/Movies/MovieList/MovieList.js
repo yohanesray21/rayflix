@@ -16,7 +16,7 @@ const MovieList = ({ list, title }) => {
           rowSpacing={{ xs: 2, sm: 3, md: 4, lg: 6 }}
           columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }}
           justifyContent="flex-start"
-          columns={12}
+          columns={16}
         >
           {list?.results?.map((result) => (
             <Grid item key={result?.id} xs={16} sm={6} md={4} lg={2}>

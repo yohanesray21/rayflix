@@ -2,7 +2,6 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getIdFromSlug } from "../../../common/text";
-import DetailBottom from "../../../components/onemovies/DetailBottom";
 import DetailTop from "../../../components/onemovies/DetailTop";
 import { getDetailMovie } from "../../../fetcher/movie";
 
