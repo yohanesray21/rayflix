@@ -12,24 +12,21 @@ const MovieItem = ({ result }) => {
   return (
     <>
       <Card
-        sx={{ cursor: "pointer" }}
-        onClick={() => navigate(`${result?.id}-${slug}`)}
+        sx={{
+          cursor: "pointer",
+        }}
+        onClick={() => navigate(`/${result?.id}-${slug}`)}
       >
         <CardMedia
           component="img"
           image={IMAGE_URL + result?.poster_path}
           alt={result?.title}
-          // height="300px"
-          // minWidth="100%"
+          minHeight="280px"
         />
         <CardContent sx={{ minHeight: "100px", maxHeight: "100px" }}>
           <Typography>{result?.title ?? result?.name}</Typography>
         </CardContent>
-        {/* <CardActions >
-            
-          </CardActions> */}
       </Card>
-      {/* <TransitionsModal /> */}
     </>
   );
 };

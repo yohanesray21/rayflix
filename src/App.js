@@ -24,7 +24,7 @@ const App = () => {
       <Box bgcolor="primary.light" minHeight="100vh">
         <CssBaseline />
         <NavigationBar />
-        <Box sx={{ mx: 15, pt: 2 }}>
+        <Box sx={{ mx: 9, pt: 2 }}>
           <RoutesApp />
         </Box>
       </Box>

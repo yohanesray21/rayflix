@@ -10,7 +10,6 @@ const SimilarMovie = () => {
   const movieId = getIdFromSlug(location.pathname);
 
   const [similarMoviesData, setSimilarMoviesData] = useState({});
-  console.log(similarMoviesData);
   const [page, setPage] = useState(1);
   const [dataEmpty, setDataEmpty] = useState(false);
 

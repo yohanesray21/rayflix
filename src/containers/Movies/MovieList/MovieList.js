@@ -13,13 +13,13 @@ const MovieList = ({ list, title }) => {
       <Box>
         <Grid
           container
-          rowSpacing={{ xs: 2, sm: 3, md: 4, lg: 6 }}
-          columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2 }}
+          rowSpacing={{ xs: 4, sm: 3, md: 4, lg: 4 }}
+          columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 2, xl: 2 }}
           justifyContent="flex-start"
           columns={16}
         >
           {list?.results?.map((result) => (
-            <Grid item key={result?.id} xs={16} sm={6} md={4} lg={2}>
+            <Grid item key={result?.id} xs={16} sm={8} md={4} lg={3} xl={2}>
               <MovieItem result={result} />
             </Grid>
           ))}
