@@ -22,7 +22,7 @@ const TopRated = () => {
       <MovieList
         list={topRatedMovies}
         dataEmpty={dataEmpty}
-        title="Similar Movies"
+        title="Top Rating For You"
       />
     </Box>
   );
