@@ -59,3 +59,18 @@ export const getTopRatedMovie = async ({ language, page, region }) => {
   const data = await MakeApiRequest(configRequest);
   return data;
 };
+
+export const getPopularTvShow = async ({ language, page }) => {
+  const url_endpoint = "/movie/popular";
+  const api_key_endpoint = `?api_key=${API_KEY}`;
+  const language_endpoint = language ? `&language=${language}` : "";
+  const page_endpoint = page ? `&page=${page}` : "";
+
+  const configRequest = {
+    BASE_URL,
+    endpoint: `${url_endpoint}${api_key_endpoint}${language_endpoint}${page_endpoint}`,
+  };
+
+  const data = await MakeApiRequest(configRequest);
+  return data;
+};
