@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SimilarTvShow = () => {
-  return <div>SimilarTvShow</div>;
+  const [similarTvShow, setSimilarTvShow] = useState({});
+
+  return <div>SimilarTvShow Update</div>;
 };
 
 export default SimilarTvShow;
