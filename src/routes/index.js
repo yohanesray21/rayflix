@@ -7,6 +7,7 @@ const TopRatedPagesLoad = loadable(() => import("../pages/TopRatedMovies"));
 const TvShowsPagesLoad = loadable(() => import("../pages/TvShowPages"));
 const TrendingPagesLoad = loadable(() => import("../pages/TrendingPages"));
 const OneMoviePagesLoad = loadable(() => import("../pages/OneMoviePages"));
+const OneTvShowPagesLoad = loadable(() => import("../pages/OneTvShowPages"));
 
 const RoutesApp = () => {
   return (
@@ -16,6 +17,7 @@ const RoutesApp = () => {
       <Route path="/film" element={<TopRatedPagesLoad />} />
       <Route path="/tvshow" element={<TvShowsPagesLoad />} />
       <Route path="/:id" element={<OneMoviePagesLoad />} />
+      <Route path="/tvshow/:id" element={<OneMoviePagesLoad />} />
     </Routes>
   );
 };
