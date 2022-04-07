@@ -1,14 +1,14 @@
 import React from "react";
-import OneMovie from "../containers/Movies/OneMovie/OneMovie";
-import SimilarMovie from "../containers/Movies/SimilarMovies/SimilarMovie";
+import OneTvShow from "../containers/TvShows/OneTvShow/OneTvShow";
+import SimilarTvShow from "../containers/TvShows/SimilarTvShow/SimilarTvShow";
 
-const OneMoviePages = () => {
+const OneTvShowPages = () => {
   return (
     <>
-      <OneMovie />
-      <SimilarMovie />
+      <OneTvShow />
+      <SimilarTvShow />
     </>
   );
 };
 
-export default OneMoviePages;
+export default OneTvShowPages;

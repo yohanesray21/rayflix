@@ -3,7 +3,6 @@ import React from "react";
 import TvShowItem from "./TvShowItem";
 
 const TvShowTrendingList = ({ title, list }) => {
-  console.log(list);
   return (
     <Box p={{ xs: 2, sm: 2, md: 6, lg: 6 }} minHeight="50vh">
       <Box mb={2}>

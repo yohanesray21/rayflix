@@ -17,7 +17,7 @@ const RoutesApp = () => {
       <Route path="/film" element={<TopRatedPagesLoad />} />
       <Route path="/tvshow" element={<TvShowsPagesLoad />} />
       <Route path="/:id" element={<OneMoviePagesLoad />} />
-      <Route path="/tvshow/:id" element={<OneMoviePagesLoad />} />
+      <Route path="/tvshow/:id" element={<OneTvShowPagesLoad />} />
     </Routes>
   );
 };

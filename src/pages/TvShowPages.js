@@ -6,7 +6,6 @@ const TvShowPages = () => {
   return (
     <>
       <PopularTvShow />
-      <SimilarTvShow />
     </>
   );
 };

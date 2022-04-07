@@ -21,7 +21,7 @@ const MovieItem = ({ result }) => {
           component="img"
           image={IMAGE_URL + result?.poster_path}
           alt={result?.title}
-          minHeight="280px"
+          sx={{ minHeight: "280px" }}
         />
         <CardContent sx={{ minHeight: "100px", maxHeight: "100px" }}>
           <Typography>{result?.title ?? result?.name}</Typography>
