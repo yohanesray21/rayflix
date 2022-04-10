@@ -1,13 +1,20 @@
 import { Box } from "@mui/system";
-import { Chip, Rating, Typography } from "@mui/material";
-import React from "react";
+import { Button, Chip, Rating, Typography } from "@mui/material";
+import React, { useMemo } from "react";
 import { IMAGE_URL } from "../../common/image";
 import { timeConvert } from "../../common/time";
-import { DataGrid } from "@mui/x-data-grid";
-import { priceConversion } from "../../common/text";
+import { getMoviePrice, idrFormat } from "../../common/currency";
+
+import AddIcon from "@mui/icons-material/Add";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AlertDialog, { ConfirmationModal } from "../modal/ConfirmationModal";
 
 const DetailTop = ({ movieData }) => {
   const title = movieData?.title;
+
+  const price = useMemo(() => {
+    return getMoviePrice(movieData?.vote_average);
+  }, [movieData?.vote_average]);
   return (
     <Box
       width="100%"
@@ -35,8 +42,30 @@ const DetailTop = ({ movieData }) => {
               `/${movieData?.backdrop_path ?? movieData?.poster_path}`
             }
             alt={movieData?.title}
-            style={{ width: "50rem" }}
+            style={{ width: "40rem" }}
           />
+          <Box
+            pt={2}
+            width="100%"
+            display="flex"
+            justifyContent="space-between"
+          >
+            <Button
+              sx={{ width: "48%" }}
+              variant="outlined"
+              startIcon={<AddIcon />}
+            >
+              Add To Favorite
+            </Button>
+            <Button
+              sx={{ width: "48%" }}
+              variant="contained"
+              startIcon={<ShoppingCartIcon />}
+              onClick={AlertDialog}
+            >
+              Buy The Movie
+            </Button>
+          </Box>
         </Box>
         <Box display="flex" flexDirection="column" overflow="auto">
           <Typography variant="h4" component="h1" fontWeight="bold">
@@ -44,7 +73,7 @@ const DetailTop = ({ movieData }) => {
           </Typography>
           <Box>
             <Typography variant="h6" component="p" fontWeight="bold" mt={2}>
-              Rp.{priceConversion(movieData?.budget)}
+              {idrFormat(price)}
             </Typography>
           </Box>
 
