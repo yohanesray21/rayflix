@@ -2,10 +2,11 @@ import { Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import AvatarProfile from "./Avatar/AvatarProfile";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavigationBar = () => {
   const [username, setUsername] = useState("Yohanes");
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -53,9 +54,11 @@ const NavigationBar = () => {
           </Typography>
         </Link>
       </Stack>
-      <Box sx={{ cursor: "pointer" }}>
-        <AvatarProfile username={username} />
-      </Box>
+      <Link to="/profile">
+        <Box sx={{ cursor: "pointer" }}>
+          <AvatarProfile username={username} variant={"dot"} />
+        </Box>
+      </Link>
     </Box>
   );
 };

@@ -33,13 +33,13 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-export default function AvatarProfile({ username }) {
+export default function AvatarProfile({ username, variant }) {
   return (
     <Stack direction="row" spacing={2}>
       <StyledBadge
         overlap="circular"
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-        variant="dot"
+        variant={variant}
       >
         <Avatar alt={username} src="../images/avatar.jpg" />
       </StyledBadge>
