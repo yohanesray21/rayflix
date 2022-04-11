@@ -6,8 +6,7 @@ import { timeConvert } from "../../common/time";
 import { getMoviePrice, idrFormat } from "../../common/currency";
 
 import AddIcon from "@mui/icons-material/Add";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import AlertDialog, { ConfirmationModal } from "../modal/ConfirmationModal";
+import { ConfirmationModal } from "../modal/ConfirmationModal";
 
 const DetailTop = ({ movieData }) => {
   const title = movieData?.title;
@@ -51,20 +50,14 @@ const DetailTop = ({ movieData }) => {
             justifyContent="space-between"
           >
             <Button
-              sx={{ width: "48%" }}
+              sx={{ width: "100%", mr: 2 }}
               variant="outlined"
               startIcon={<AddIcon />}
             >
               Add To Favorite
             </Button>
-            <Button
-              sx={{ width: "48%" }}
-              variant="contained"
-              startIcon={<ShoppingCartIcon />}
-              onClick={AlertDialog}
-            >
-              Buy The Movie
-            </Button>
+
+            <ConfirmationModal />
           </Box>
         </Box>
         <Box display="flex" flexDirection="column" overflow="auto">

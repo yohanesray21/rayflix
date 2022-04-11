@@ -5,8 +5,17 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import Slide from "@mui/material/Slide";
 
-export default function AlertDialog() {
+import CloseIcon from "@mui/icons-material/Close";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Box, Divider, IconButton, Typography } from "@mui/material";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+export const ConfirmationModal = () => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -18,32 +27,60 @@ export default function AlertDialog() {
   };
 
   return (
-    <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open alert dialog
+    <Box sx={{ width: "100%" }}>
+      <Button
+        sx={{ width: "100%" }}
+        variant="contained"
+        startIcon={<ShoppingCartIcon />}
+        onClick={handleClickOpen}
+      >
+        Buy The Movie
       </Button>
       <Dialog
         open={open}
+        TransitionComponent={Transition}
+        keepMounted
         onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
+        <DialogTitle
+          sx={{
+            diplay: "flex",
+          }}
+        >
+          <Typography mr={10} variant="h6" fontWeight="bold">
+            Buy Movie Confirmation
+          </Typography>
+          <IconButton
+            aria-label="close"
+            onClick={handleClose}
+            sx={{
+              position: "absolute",
+              right: 8,
+              top: 12,
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
         </DialogTitle>
+        <Divider />
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
+          <DialogContentText
+            id="alert-dialog-slide-description"
+            color="primary.dark"
+          >
+            Are You Sure to Buy This Movie?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose} autoFocus>
-            Agree
+          <Button sx={{ mr: 2 }} onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="contained" onClick={handleClose}>
+            Buy
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Box>
   );
-}
+};
