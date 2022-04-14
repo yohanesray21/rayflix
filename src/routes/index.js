@@ -1,6 +1,7 @@
 import loadable from "@loadable/component";
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { ModalValidation } from "../components/modal/ModalValidation";
 
 const HomePagesLoad = loadable(() => import("../pages/HomePages"));
 const TopRatedPagesLoad = loadable(() => import("../pages/TopRatedMovies"));
@@ -12,17 +13,25 @@ const ProfilePages = loadable(() => import("../pages/ProfilePages"));
 
 const RoutesApp = () => {
   const [user, setUser] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
-    <Routes>
-      <Route path="/" element={<HomePagesLoad />} />
-      <Route path="/trending" element={<TrendingPagesLoad />} />
-      <Route path="/film" element={<TopRatedPagesLoad />} />
-      <Route path="/tvshow" element={<TvShowsPagesLoad />} />
-      <Route path="/:id" element={<OneMoviePagesLoad />} />
-      <Route path="/tvshow/:id" element={<OneTvShowPagesLoad />} />
-      <Route path="/profile" element={<ProfilePages />} />
-    </Routes>
+    <>
+      <ModalValidation
+        open={!isAuthenticated}
+        handleSubmitAuth={handleSubmitAuth}
+      />
+
+      <Routes>
+        <Route path="/" element={<HomePagesLoad />} />
+        <Route path="/trending" element={<TrendingPagesLoad />} />
+        <Route path="/film" element={<TopRatedPagesLoad />} />
+        <Route path="/tvshow" element={<TvShowsPagesLoad />} />
+        <Route path="/:id" element={<OneMoviePagesLoad />} />
+        <Route path="/tvshow/:id" element={<OneTvShowPagesLoad />} />
+        <Route path="/profile" element={<ProfilePages />} />
+      </Routes>
+    </>
   );
 };
 
