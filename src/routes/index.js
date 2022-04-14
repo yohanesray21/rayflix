@@ -1,5 +1,5 @@
 import loadable from "@loadable/component";
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 const HomePagesLoad = loadable(() => import("../pages/HomePages"));
@@ -11,6 +11,8 @@ const OneTvShowPagesLoad = loadable(() => import("../pages/OneTvShowPages"));
 const ProfilePages = loadable(() => import("../pages/ProfilePages"));
 
 const RoutesApp = () => {
+  const [user, setUser] = useState({});
+
   return (
     <Routes>
       <Route path="/" element={<HomePagesLoad />} />
