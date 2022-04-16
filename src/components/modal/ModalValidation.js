@@ -4,7 +4,6 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { FormControl, FormLabel, Stack, TextField } from "@mui/material";
 import { useState } from "react";
-import { Label } from "@mui/icons-material";
 
 const style = {
   position: "absolute",
@@ -19,23 +18,22 @@ const style = {
   borderRadius: 1,
 };
 
-export const ModalValidation = () => {
-  const [open, setOpen] = useState(true);
-  const [name, setName] = useState("");
+const ModalAuth = () => {};
+
+export const ModalValidation = ({ isOpen, handleSubmitAuth }) => {
+  const [open, setOpen] = useState(isOpen);
+  const [fullname, setFullName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   return (
     <div>
-      <Modal open={open} onClose={handleClose}>
+      <Modal open={open} onClose={open}>
         <Box sx={style}>
           <Typography mb={4} variant="h6" component="h3">
             Authentication
           </Typography>
-          <FormControl>
+          <FormControl sx={{ width: "100%" }}>
             <Stack spacing={2}>
               <FormLabel>Fullname</FormLabel>
               <TextField
@@ -43,7 +41,7 @@ export const ModalValidation = () => {
                 id="name"
                 label="Name"
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setFullName(e.target.value);
                 }}
               />
 
@@ -67,13 +65,18 @@ export const ModalValidation = () => {
                   setConfirmPassword(e.target.value);
                 }}
               />
-              <Button variant="contained">Sign in</Button>
+              <Button
+                onClick={() => {
+                  handleSubmitAuth(fullname);
+                }}
+                variant="contained"
+              >
+                Sign in
+              </Button>
             </Stack>
           </FormControl>
         </Box>
       </Modal>
-
-      <Button onClick={handleOpen}>Open modal</Button>
     </div>
   );
 };
