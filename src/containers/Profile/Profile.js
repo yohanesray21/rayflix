@@ -1,9 +1,13 @@
 import { Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useContext } from "react";
+import { idrFormat } from "../../common/currency";
+import GlobalContext from "../../context/GlobalContext";
 import AvatarProfile from "../NavigationBar/Avatar/AvatarProfile";
 
 const Profile = () => {
+  const { user } = useContext(GlobalContext);
+
   return (
     <Box display="flex" justifyContent="center">
       <Box mt={2} p={5} border="2px solid #000" borderRadius={1} width="30%">
@@ -16,11 +20,11 @@ const Profile = () => {
         </Stack>
         <Stack direction="row" spacing={14} mt={2}>
           <Typography>Name</Typography>
-          <Typography>Yohanes Silitonga</Typography>
+          <Typography>{user?.fullname}</Typography>
         </Stack>
         <Stack direction="row" spacing={14} mt={2}>
           <Typography>Saldo</Typography>
-          <Typography>Rp. 100.000,-</Typography>
+          <Typography>{idrFormat(user?.balance)}</Typography>
         </Stack>
       </Box>
     </Box>

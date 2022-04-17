@@ -50,17 +50,19 @@ const RoutesApp = () => {
       />
 
       <GlobalContext.Provider value={{ user, setUser }}>
-        {isAuthenticated && <SimpleProfile />}
+        <>
+          {isAuthenticated && <SimpleProfile />}
 
-        <Routes>
-          <Route path="/" element={<HomePagesLoad />} />
-          <Route path="/trending" element={<TrendingPagesLoad />} />
-          <Route path="/film" element={<TopRatedPagesLoad />} />
-          <Route path="/tvshow" element={<TvShowsPagesLoad />} />
-          <Route path="/:id" element={<OneMoviePagesLoad />} />
-          <Route path="/tvshow/:id" element={<OneTvShowPagesLoad />} />
-          <Route path="/profile" element={<ProfilePages />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<HomePagesLoad />} />
+            <Route path="/trending" element={<TrendingPagesLoad />} />
+            <Route path="/film" element={<TopRatedPagesLoad />} />
+            <Route path="/tvshow" element={<TvShowsPagesLoad />} />
+            <Route path="/:id" element={<OneMoviePagesLoad />} />
+            <Route path="/tvshow/:id" element={<OneTvShowPagesLoad />} />
+            <Route path="/profile" element={<ProfilePages />} />
+          </Routes>
+        </>
       </GlobalContext.Provider>
     </>
   );

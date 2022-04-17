@@ -18,13 +18,9 @@ const style = {
   borderRadius: 1,
 };
 
-const ModalAuth = () => {};
-
 export const ModalValidation = ({ isOpen, handleSubmitAuth }) => {
   const [open, setOpen] = useState(isOpen);
   const [fullname, setFullName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
     <div>
@@ -35,34 +31,12 @@ export const ModalValidation = ({ isOpen, handleSubmitAuth }) => {
           </Typography>
           <FormControl sx={{ width: "100%" }}>
             <Stack spacing={2}>
-              <FormLabel>Fullname</FormLabel>
               <TextField
                 placeholder="Full Name"
-                id="name"
-                label="Name"
+                id="fullname"
+                label="Full Name"
                 onChange={(e) => {
                   setFullName(e.target.value);
-                }}
-              />
-
-              <FormLabel>Password</FormLabel>
-
-              <TextField
-                placeholder="Password"
-                id="password"
-                label="Password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-              <FormLabel>Confirmation Password</FormLabel>
-
-              <TextField
-                placeholder="confirmPassword"
-                id="confirmPassword"
-                label="Confirmation Password"
-                onChange={(e) => {
-                  setConfirmPassword(e.target.value);
                 }}
               />
               <Button
