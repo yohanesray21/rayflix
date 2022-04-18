@@ -8,12 +8,17 @@ import { getMoviePrice, idrFormat } from "../../common/currency";
 import AddIcon from "@mui/icons-material/Add";
 import { ConfirmationModal } from "../modal/ConfirmationModal";
 
-const DetailTop = ({ movieData }) => {
+const DetailTop = ({
+  movieData,
+  confirmAction,
+  price,
+  setIsOpen,
+  setConfirmBuy,
+  isOpen,
+  movieOwned,
+}) => {
   const title = movieData?.title;
 
-  const price = useMemo(() => {
-    return getMoviePrice(movieData?.vote_average);
-  }, [movieData?.vote_average]);
   return (
     <Box
       width="100%"
@@ -57,7 +62,12 @@ const DetailTop = ({ movieData }) => {
               Add To Favorite
             </Button>
 
-            <ConfirmationModal />
+            <ConfirmationModal
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              confirmAction={confirmAction}
+              movieOwned={movieOwned}
+            />
           </Box>
         </Box>
         <Box display="flex" flexDirection="column" overflow="auto">

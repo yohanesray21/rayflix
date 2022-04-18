@@ -15,32 +15,39 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export const ConfirmationModal = () => {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+export const ConfirmationModal = ({
+  isOpen,
+  setIsOpen,
+  confirmAction,
+  movieOwned,
+}) => {
   return (
     <Box sx={{ width: "100%" }}>
-      <Button
-        sx={{ width: "100%" }}
-        variant="contained"
-        startIcon={<ShoppingCartIcon />}
-        onClick={handleClickOpen}
-      >
-        Buy The Movie
-      </Button>
+      {movieOwned ? (
+        <Button
+          sx={{ width: "100%" }}
+          variant="contained"
+          startIcon={<ShoppingCartIcon />}
+          onClick={() => setIsOpen(true)}
+        >
+          You owned this movie
+        </Button>
+      ) : (
+        <Button
+          sx={{ width: "100%" }}
+          variant="contained"
+          startIcon={<ShoppingCartIcon />}
+          onClick={() => setIsOpen(true)}
+        >
+          Buy The Movie
+        </Button>
+      )}
+
       <Dialog
-        open={open}
+        open={isOpen}
         TransitionComponent={Transition}
         keepMounted
-        onClose={handleClose}
+        onClose={() => setIsOpen(false)}
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle
@@ -53,7 +60,7 @@ export const ConfirmationModal = () => {
           </Typography>
           <IconButton
             aria-label="close"
-            onClick={handleClose}
+            onClick={() => setIsOpen(false)}
             sx={{
               position: "absolute",
               right: 8,
@@ -73,10 +80,10 @@ export const ConfirmationModal = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button sx={{ mr: 2 }} onClick={handleClose}>
+          <Button sx={{ mr: 2 }} onClick={() => setIsOpen(false)}>
             Cancel
           </Button>
-          <Button variant="contained" onClick={handleClose}>
+          <Button variant="contained" onClick={confirmAction}>
             Buy
           </Button>
         </DialogActions>
