@@ -24,12 +24,7 @@ export const ConfirmationModal = ({
   return (
     <Box sx={{ width: "100%" }}>
       {movieOwned ? (
-        <Button
-          sx={{ width: "100%" }}
-          variant="contained"
-          startIcon={<ShoppingCartIcon />}
-          onClick={() => setIsOpen(true)}
-        >
+        <Button sx={{ width: "100%" }} variant="contained" disabled>
           You owned this movie
         </Button>
       ) : (

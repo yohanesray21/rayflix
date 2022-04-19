@@ -3,7 +3,7 @@ import { Button, Chip, Rating, Typography } from "@mui/material";
 import React, { useMemo } from "react";
 import { IMAGE_URL } from "../../common/image";
 import { timeConvert } from "../../common/time";
-import { getMoviePrice, idrFormat } from "../../common/currency";
+import { idrFormat } from "../../common/currency";
 
 import AddIcon from "@mui/icons-material/Add";
 import { ConfirmationModal } from "../modal/ConfirmationModal";
@@ -251,6 +251,22 @@ const DetailTop = ({
               {movieData?.vote_average}
             </Typography>
           </Box>
+        </Box>
+        <Box pt={2} width="100%" display="flex" justifyContent="space-between">
+          <Button
+            sx={{ width: "100%", mr: 2 }}
+            variant="outlined"
+            startIcon={<AddIcon />}
+          >
+            Add To Favorite
+          </Button>
+
+          <ConfirmationModal
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            confirmAction={confirmAction}
+            movieOwned={movieOwned}
+          />
         </Box>
       </Box>
     </Box>

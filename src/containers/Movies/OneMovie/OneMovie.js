@@ -22,7 +22,7 @@ const OneMovie = () => {
     } else {
       return false;
     }
-  });
+  }, [movieId]);
 
   const [movieData, setMovieData] = useState({});
   const [confirmBuy, setConfirmBuy] = useState(false);
@@ -34,6 +34,14 @@ const OneMovie = () => {
       .then((data) => setMovieData(data))
       .catch(() => {});
   }, [movieId]);
+
+  useEffect(() => {
+    if (isMovieOwned) {
+      setMovieOwned(true);
+    } else {
+      setMovieOwned(false);
+    }
+  }, [movieId, isMovieOwned]);
 
   const price = useMemo(() => {
     return getMoviePrice(movieData?.vote_average);
@@ -49,8 +57,8 @@ const OneMovie = () => {
         const movieOwnStorageData = JSON.parse(
           sessionStorage.getItem("movieOwned")
         );
-
-        movieOwnStorageData?.push(getIdFromSlug(movieId));
+        console.log(movieOwnStorageData);
+        movieOwnStorageData.push(getIdFromSlug(movieId));
 
         sessionStorage.getItem(
           "movieOwned",
@@ -70,7 +78,7 @@ const OneMovie = () => {
 
       const userStorage = JSON.parse(sessionStorage.getItem("user"));
       const updateUserStorage = {
-        ...updateUserStorage,
+        ...userStorage,
         balance: userStorage?.balance - price,
       };
 
@@ -78,8 +86,9 @@ const OneMovie = () => {
 
       setMovieOwned(true);
     } else {
-      setConfirmBuy(false);
+      return;
     }
+    setConfirmBuy(false);
   };
 
   return (
