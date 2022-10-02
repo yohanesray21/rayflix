@@ -1,4 +1,10 @@
-import { Stack, Typography } from "@mui/material";
+import {
+  Card,
+  Stack,
+  Typography,
+  CardHeader,
+  CardContent,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
@@ -10,22 +16,27 @@ const SimpleProfile = () => {
   const location = useLocation();
   return (
     <Box display={location?.pathname === "/profile" ? "none" : ""}>
-      <Box
-        border="1px solid #000"
-        borderRadius={1}
-        ml={6}
-        mt={2}
-        p={3}
-        width="30%"
-      >
-        <Stack direction="row" spacing={14} mt={2}>
-          <Typography>Name</Typography>
-          <Typography>: {user?.fullname}</Typography>
-        </Stack>
-        <Stack direction="row" spacing={14} mt={2}>
-          <Typography>Balance</Typography>
-          <Typography>: {idrFormat(user?.balance)}</Typography>
-        </Stack>
+      <Box width={{ xs: "100%", sm: "50%", md: "30%" }} mt={4}>
+        <Card variant="outlined">
+          <CardHeader title="Profile Information" />
+
+          <CardContent>
+            <Stack spacing={1.5}>
+              <Box>
+                <Typography variant="caption" fontWeight={700}>
+                  Name
+                </Typography>
+                <Typography>{user?.fullname}</Typography>
+              </Box>
+              <Box>
+                <Typography variant="caption" fontWeight={700}>
+                  Balance
+                </Typography>
+                <Typography>{idrFormat(user?.balance)}</Typography>
+              </Box>
+            </Stack>
+          </CardContent>
+        </Card>
       </Box>
     </Box>
   );
