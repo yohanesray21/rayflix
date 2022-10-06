@@ -24,8 +24,7 @@ const navigations = [
 ];
 
 const NavigationBar = () => {
-  const [username, setUsername] = useState("Yohanes");
-  const navigate = useNavigate();
+  const [username] = useState("Yohanes");
 
   const location = useLocation();
 
@@ -58,7 +57,11 @@ const NavigationBar = () => {
           const isActive = navigation.href === location.pathname;
 
           return (
-            <Link to={navigation.href} style={{ textDecoration: "none" }}>
+            <Link
+              to={navigation.href}
+              style={{ textDecoration: "none" }}
+              key={navigation.href}
+            >
               <Typography
                 variant="h6"
                 sx={{ color: isActive ? "common.white" : "primary.dark" }}

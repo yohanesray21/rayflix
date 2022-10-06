@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { FormControl, FormLabel, Stack, TextField } from "@mui/material";
+import { Stack, TextField } from "@mui/material";
 import { useState } from "react";
 
 const style = {
@@ -19,17 +19,23 @@ const style = {
 };
 
 export const ModalValidation = ({ isOpen, handleSubmitAuth }) => {
-  const [open, setOpen] = useState(isOpen);
+  const [open] = useState(isOpen);
   const [fullname, setFullName] = useState("");
 
   return (
     <div>
-      <Modal open={open} onClose={open}>
+      <Modal open={open}>
         <Box sx={style}>
           <Typography mb={4} variant="h6" component="h3">
             Authentication
           </Typography>
-          <FormControl sx={{ width: "100%" }}>
+          <form
+            onSubmit={(evt) => {
+              evt.preventDefault();
+              handleSubmitAuth(fullname);
+            }}
+            style={{ width: "100%" }}
+          >
             <Stack spacing={2}>
               <TextField
                 placeholder="Full Name"
@@ -39,16 +45,11 @@ export const ModalValidation = ({ isOpen, handleSubmitAuth }) => {
                   setFullName(e.target.value);
                 }}
               />
-              <Button
-                onClick={() => {
-                  handleSubmitAuth(fullname);
-                }}
-                variant="contained"
-              >
+              <Button variant="contained" type="submit">
                 Sign in
               </Button>
             </Stack>
-          </FormControl>
+          </form>
         </Box>
       </Modal>
     </div>
