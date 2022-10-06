@@ -2,11 +2,32 @@ import { Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import AvatarProfile from "./Avatar/AvatarProfile";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+const navigations = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Film",
+    href: "/film",
+  },
+  {
+    label: "Trending",
+    href: "/trending",
+  },
+  {
+    label: "TV Show",
+    href: "/tvshow",
+  },
+];
 
 const NavigationBar = () => {
   const [username, setUsername] = useState("Yohanes");
   const navigate = useNavigate();
+
+  const location = useLocation();
 
   return (
     <Box
@@ -33,26 +54,20 @@ const NavigationBar = () => {
         spacing={{ xs: 1, sm: 2, md: 4 }}
         color="primary.dark"
       >
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <Typography variant="h6" sx={{ color: "primary.dark" }}>
-            Home
-          </Typography>
-        </Link>
-        <Link to="/film" style={{ textDecoration: "none" }}>
-          <Typography variant="h6" sx={{ color: "primary.dark" }}>
-            Film
-          </Typography>
-        </Link>
-        <Link to="/trending" style={{ textDecoration: "none" }}>
-          <Typography variant="h6" sx={{ color: "primary.dark" }}>
-            Trending
-          </Typography>
-        </Link>
-        <Link to="/tvshow" style={{ textDecoration: "none" }}>
-          <Typography variant="h6" sx={{ color: "primary.dark" }}>
-            TV Show
-          </Typography>
-        </Link>
+        {navigations.map((navigation) => {
+          const isActive = navigation.href === location.pathname;
+
+          return (
+            <Link to={navigation.href} style={{ textDecoration: "none" }}>
+              <Typography
+                variant="h6"
+                sx={{ color: isActive ? "common.white" : "primary.dark" }}
+              >
+                {navigation.label}
+              </Typography>
+            </Link>
+          );
+        })}
       </Stack>
       <Link to="/profile">
         <Box sx={{ cursor: "pointer" }}>
